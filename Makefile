@@ -1,10 +1,11 @@
-VERSION=1_0_0
 BIN=server.out client.out
 CFLAGS=-thread
+TARFILE=chat.tar.gz
+DIR=chat
 
 all: $(BIN)
 
-%.out: log.cmo service.cmo server.cmo client.cmo
+%.out: log.cmo service.cmo %.cmo
 	ocamlc -thread unix.cma threads.cma $^ -o $@
 
 %.cmo: %.ml %.cmi
@@ -17,7 +18,7 @@ all: $(BIN)
 	ocamlc -i $(CFLAGS) $^ > $@
 
 dist: mrproper
-	tar czvf chat_$(VERSION).tar.gz ../chat
+	cd .. && tar czvf $(TARFILE) --exclude .git --exclude *.tar.gz  $(DIR) && mv $(TARFILE) $(DIR)  && cd $(DIR)
 
 clean:
 	rm -rf $(BIN) *.cmi
