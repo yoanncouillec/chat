@@ -9,8 +9,8 @@ let main =
   let port = ref 9900 in
   let options =
     [
-      ("-h", Arg.Set_string hostname, "Hostname of the server");
-      ("-p", Arg.Set_int port, "Port of the server");
+      ("--host", Arg.Set_string hostname, "Hostname of the server");
+      ("--port", Arg.Set_int port, "Port of the server");
     ] in
   Arg.parse options print_endline "Chat client:" ;
   let name = Service.ask_for_name () in
