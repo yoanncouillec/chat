@@ -64,7 +64,7 @@ let rec receive_service (local_name, inc, outc) =
      let sent_time = List.assoc id !history in
      let received_time = Unix.gettimeofday () in
      let round_trip_time = received_time -. sent_time in
-     Log.log ("Round trip time for #"^id^ " is "^(string_of_float round_trip_time)^"s]") ;
+     Log.log ("Round trip time for #"^id^ " is "^(string_of_float round_trip_time)^"s") ;
      print_string ("("^local_name^") ") ;
      flush stdout ;
      receive_service (local_name, inc, outc)
