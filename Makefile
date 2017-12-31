@@ -1,11 +1,11 @@
-BIN=server.out client.out
+BIN=chat.out #server.out client.out
 CFLAGS=-thread
 TARFILE=chat.tar.gz
 DIR=chat
 
 all: $(BIN)
 
-%.out: log.cmo service.cmo %.cmo
+%.out: gensym.cmo log.cmo service.cmo %.cmo
 	ocamlc -thread unix.cma threads.cma $^ -o $@
 
 %.cmo: %.ml %.cmi

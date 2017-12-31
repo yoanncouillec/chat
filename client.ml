@@ -1,9 +1,3 @@
-let connect_to_server hostname port = 
-  let socket = Unix.socket Unix.PF_INET Unix.SOCK_STREAM 0 in
-  let address = Unix.inet_addr_of_string hostname in 
-  Unix.connect socket (Unix.ADDR_INET(address, port));
-  (Unix.in_channel_of_descr socket, Unix.out_channel_of_descr socket)
-
 let main =
   let hostname = ref "127.0.0.1" in
   let port = ref 9900 in
